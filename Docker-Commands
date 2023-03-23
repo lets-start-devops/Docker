@@ -1,0 +1,28 @@
+docker info | More
+
+docker <docker-obj> <sub-command> [options] <args>
+        CONTAINER
+        IMAGE
+        VOLUME
+        NETWORK
+
+docker images ls
+
+
+docker network ls 
+
+
+docker container ls
+docker container ls -a --> all
+docker container ls -l --> last
+docker container ls -q --> container id
+docker container run -it ubuntu
+docker container kill ubuntu
+docker container create --name=httpd httpd
+docker container start 
+docker container rename <oldname> <newname>
+create + start = run
+docker container run httpd
+docker container run -it ubuntu  press CTRL + P + Q to exit without stoping the container
+docker container run -d httpd
+docker container attach httpd
