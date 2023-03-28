@@ -12,6 +12,10 @@
 
 Please follow the instructions mentioned in the [Docker Website](https://www.docker.com/products/docker-desktop/) to run docker containers.
 
+## Docker Login Command
+
+> docker login
+
 
 ## Docker Containers Commands:
 
@@ -76,7 +80,7 @@ docker container rm $(docker container ls -aq)  -> delete all containers
 docker container prune --> stop and delte all
 ```
 
-#### Copy Files in Container
+### Copy Files in Container
 
 
 
@@ -86,3 +90,38 @@ docker container cp httpd:/etc/index.html c:/tmp/index.html
 
 ```
 
+### Volumes
+
+```sh
+docker volume create <vol name>
+docker volume inspect test  -->  df -h | grep /test from container
+
+ docker volume remove <vol name>
+
+docker container run --mount source=<vol name>,destination=/<path> httpd
+
+docker container run --mount source=<vol name>,destination=/<path> httpd
+
+docker container run --mount type=bind,source=F:\My-Devops-Class-Workspace\Docker\httpd\index.html,destination=/usr/local/apache2/htdocs/index.html -d -p 8083:80 httpd         ---> mount a directory to from the docker host to the container
+```
+
+✨Note✨
+- By default volumes are mounted ain ReadWrite mode, use 'readonly' flag while mounting the flag to a container
+
+## Build & PUSH Docker Image
+
+In order to build a docker image create a `Dockerfile` having the set of instructions catering your needs. Once done, run the below commands :- 
+
+```sh
+
+docker image build . -f <Dockerfilename> -t <tag to give to the docker>:<version>
+
+docker push <tag to given to the docker image>:<version>
+
+ docker history   --> to investigate the changes done on your image
+
+```
+✨Note✨
+- If you do not wish to create a docker file but instead use an existing container to build an image then make the desired changes in your container and run commit command. The `-a` flag stands for `author`. This com,mand will save it as an image.  
+
+>docker container commit -a "Shivakumar Darapu" clever_poitras podus:apache2
