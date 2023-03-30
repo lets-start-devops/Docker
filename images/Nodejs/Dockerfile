@@ -5,4 +5,4 @@ RUN apt-get update && \
 RUN mkdir myapp
 COPY app.js /myapp/
 EXPOSE 3000
-ENTRYPOINT  node /myapp/app.js
+ENTRYPOINT node /myapp/app.js
